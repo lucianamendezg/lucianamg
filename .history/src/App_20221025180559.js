@@ -3,12 +3,11 @@ import { Header } from 'react-fullpage';
 import LanguageHeader from './components/languageHeader';
 
 export default function App() {
-  const { t, i18n } = useTranslation();
-
+  const { t } = useTranslation();
   function changeLanguage (languageValue) {
     i18n.changeLanguage(languageValue);
   }
-
+  
   return (
     <div>
       <Header>
@@ -16,7 +15,6 @@ export default function App() {
           changeLanguage={changeLanguage}
         />
       </Header>
-      H
       <div>{t('test')}</div>
     </div>
   );

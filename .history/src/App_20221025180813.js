@@ -16,7 +16,7 @@ export default function App() {
           changeLanguage={changeLanguage}
         />
       </Header>
-      H
+      Hello
       <div>{t('test')}</div>
     </div>
   );
