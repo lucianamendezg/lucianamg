@@ -1,3 +1,4 @@
+import {resolvedLanguage} from 'i18n';
 import { useTranslation } from 'react-i18next';
 
 export default function App() {
@@ -11,7 +12,7 @@ export default function App() {
     <div>
       <select className="custom-select" style={{width: 200}} onChange={changeLanguageHandler}>
         <option value="en" >English</option>
-        <option value="es" >Espanol</option>
+        <option value="hn" >Hindi</option>
       </select>
           <div>{t('test')}</div>
     </div>

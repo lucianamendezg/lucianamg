@@ -1,4 +1,5 @@
 import { useTranslation } from 'react-i18next';
+import ReactFullpage from "@fullpage/react-fullpage";
 
 export default function App() {
   const changeLanguageHandler = (e) => {
