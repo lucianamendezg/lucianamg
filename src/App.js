@@ -1,34 +1,37 @@
 import { useTranslation } from 'react-i18next';
-import LanguageHeader from './components/languageHeader';
 import { Controller, Scene } from 'react-scrollmagic';
+import Opener from './components/opener/opener';
+import AboutMe from './components/aboutMe/aboutMe';
+import ProfessionalExperience from './components/professionalExperience/professionalExperience';
+import SampleWork from './components/sampleWork/sampleWork';
+import SkillsAndAwards from './components/skillsAndAwards.js/skillsAndAwards';
 
 export default function App() {
-  const { t, i18n } = useTranslation();
+  const { i18n } = useTranslation();
 
   function changeLanguage (languageValue) {
     i18n.changeLanguage(languageValue);
   }
+
+  const informationSections = [
+    {id: "opener", component: <Opener changeLanguage={changeLanguage}/>},
+    {id: "aboutMe", component: <AboutMe/>},
+    {id: "professionalExperience", component: <ProfessionalExperience/>},
+    {id: "sampleWork", component: <SampleWork/>},
+    {id: "skillsAndAwards", component: <SkillsAndAwards/>},
+  ]
+
   return (
     <div className="overflow-hidden">
-      {/*
-        <LanguageHeader
-          changeLanguage={changeLanguage}
-        />
-      <div>{t('test')}</div>
-  */}
       <Controller globalSceneOptions={{ triggerHook: 'onLeave' }}>
-      <Scene pin>
-        <div className="block bg-lavander h-screen w-screen overflow-visible relative text-9xl"><span>Panel</span></div>
-      </Scene>
-      <Scene pin>
-        <div className="block bg-yellow h-screen w-screen overflow-visible relative text-9xl"><span>Panel</span></div>
-      </Scene>
-      <Scene pin>
-        <div className="block bg-black h-screen w-screen overflow-visible relative text-9xl"><span>Panel</span></div>
-      </Scene>
-      <Scene pin>
-        <div className=" block bg-cream h-screen w-screen overflow-visible relative text-9xl"><span>Panel</span></div>
-      </Scene>
+        {
+          informationSections.map((section) =>
+          <Scene pin>
+            <div id={section.id} className="block h-screen w-screen overflow-visible relative">
+              {section.component}
+            </div>
+          </Scene>
+        )}
     </Controller>
     </div>
   );
